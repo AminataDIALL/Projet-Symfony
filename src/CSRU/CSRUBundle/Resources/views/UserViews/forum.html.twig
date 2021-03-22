@@ -1,0 +1,49 @@
+{% extends "::layout/layout.html_2.twig" %}
+{% block body %}
+
+    <!--  vue de la page de forum -->
+
+    <ul class="breadcrumb">
+        <li>
+            <i class="icon-home"></i>
+            <a href="{{ path('page_accueil') }}">ACCUEIL </a><strong>></strong>
+            <i class="icon-angle-right"></i>
+            <a href="#">FORUM </a>
+        </li>
+    </ul>
+    <br/><br/><br/>
+    <div class="row">
+        {% for f in forum %}
+            <div class="col-lg-12 list-group">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-2">
+                    <img src="{{asset(f.utilisateur.profil.image.AssetPath) }}" alt="image" width="50" height="50" class="img-circle"><br/>
+                    {{ f.utilisateur }}
+                </div>
+                <div class="col-lg-7">
+                    {{ f.contenu }}
+                </div>
+                <div class="col-lg-2"style="float: right">
+                    <font style="color: #08C">{{ f.date|date('d-m-Y') }}</font>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            {% include 'CSRUCSRUBundle:UserViews:pagination.html.twig' %}
+            {{ form_start(form) }}
+            <div class="form-group">
+                {{ form_label(form.contenu) }}
+                {{ form_widget(form.contenu ,{'attr':{'class':'form-control','placeholder':'Exprimez-vous ici ...'}}) }}
+                {{ form_errors(form.contenu) }}
+            </div>
+            <button class="btn btn-primary" type="submit">Publier</button>
+            {{ form_end(form) }}
+        </div>
+        <div class="col-lg-1"></div>      
+    </div><br/>
+
+
+{% endblock %}

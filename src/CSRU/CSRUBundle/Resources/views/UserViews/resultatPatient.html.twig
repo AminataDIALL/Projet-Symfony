@@ -1,0 +1,62 @@
+{% extends "::layout/layout.html.twig" %}
+{% block body %}
+
+    <!--  vue de la page affichant le resultat des patients recherchés dans le système -->
+
+    <h2><center>Résultat de la recherche</center></h2>
+            {% if patients != null %}
+        <section class="table-responsive">
+            <table width="100%" class="table table-bordered table-bordered table-striped table-condensed">
+                <thead style="background-color: #e4b9b9">
+                <th style="line-height: 210%">
+                <center>Matricule</center>
+                </th>
+                <th>
+                <center>  Nom</center>
+                </th>
+                <th>
+                <center> Prenom</center>
+                </th>
+                <th>
+                <center> Age</center>
+                </th>
+                <th>
+                <center> Faculté</center>
+                </th>
+                <th>
+                <center> Action</center>
+                </th>
+
+                </thead>
+
+                {% for dossier in patients %}
+                    <tr>
+                        <td>
+                    <center> {{ dossier.etudiant.matricule }}</center>
+                    </td>
+                    <td>
+                    <center> {{ dossier.etudiant.nom }}</center>
+                    </td>
+                    <td>
+                    <center> {{ dossier.etudiant.prenom }}</center>
+                    </td>
+                    <td>
+                    <center> {{ dossier.etudiant.age|date('d-m-Y')}}</center>
+                    </td>
+                    <td>
+                    <center> {{ dossier.etudiant.faculte }}</center>
+                    </td>
+                    <td>
+                    <center><a href="{{ path('dossierMedical',{'id':dossier.id}) }}" data-toggle="popover" title="Accéder au dossier médical" data-content="Accéder au dossier médical"><span class="glyphicon glyphicon-list-alt"  ></span></a></center>
+                    </td>
+                    </tr>
+                {% endfor %}
+
+            </table>
+        </section> 
+    {% else %}
+        <center>
+            <h3> Aucun patient enrégistré avec ce numéro matricule</h3>
+        </center>
+    {% endif %}
+{% endblock %}

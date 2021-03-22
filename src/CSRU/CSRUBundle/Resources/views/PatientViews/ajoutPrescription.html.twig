@@ -1,0 +1,64 @@
+{% extends "::layout/layout.html.twig" %}
+{% block body %}
+
+    <!--  vue de la page d'ajout d'une prescription d'un dossier Medical -->
+
+    <center> <h2>Prescription</h2></center><br/>
+    <div class="row">
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-8">
+            {{ form_start(form) }}
+            <div class="form-group">
+                {{ form_label(form.type) }}
+                {{ form_widget(form.type ,{'attr':{'class':'form-control gave1'}}) }}
+                {{ form_errors(form.type) }}
+            </div>
+            <div class="form-group gave2"> 
+                {{ form_label(form.typeExamen) }}
+                {{ form_widget(form.typeExamen ,{'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.typeExamen) }}
+            </div>
+            <div class="form-group col-lg-4 gave4">   
+                {{ form_label(form.MediPrescription.nomMedicament) }}
+                {{ form_widget(form.MediPrescription.nomMedicament ,{'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.MediPrescription.nomMedicament) }}
+            </div>
+            <div class="form-group col-lg-4 gave5">   
+                {{ form_label(form.MediPrescription.quantiteMedicament) }}
+                {{ form_widget(form.MediPrescription.quantiteMedicament ,{'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.MediPrescription.quantiteMedicament) }}
+            </div>
+            <div class="form-group col-lg-4 gave6">   
+                {{ form_label(form.MediPrescription.nbreMedicament) }}
+                {{ form_widget(form.MediPrescription.nbreMedicament ,{'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.MediPrescription.nbreMedicament) }}
+            </div>
+
+            <ul class="medi gave4" data-prototype="{{ form_widget(form.MediPrescription)|e('html_attr') }}" >
+                {% for medi in form.MediPrescription %}
+                    <li>{{ form_row(medi) }}</li>
+                    {% endfor %} 
+            </ul>
+            <div class="form-group gave3">   
+                {{ form_label(form.contenu) }}
+                {{ form_widget(form.contenu ,{'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.contenu) }}
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-lg-6">
+            <button class="btn btn-round btn-info" type="submit" style="float: right">Valider</button>
+            {{ form_end(form) }}
+        </div>
+        <div class="col-lg-6">
+            <a href="{{ path('dossierMedical',{'id':dossier.id}) }}"><button class="btn btn-round btn-warning"> Annuler </button> </a>
+        </div>
+    </div>
+    <br/>
+
+
+{% endblock %}

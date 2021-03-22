@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmnls="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type"content="text/html; charset=utf-8"/>
+        <title> Facture </title>
+    <a href="facturePDF.html.twig"></a>
+</head>
+<body>
+    <h1>CSRU-MALI</h1>
+    <h2 align="center">FICHE DE SORTIE</h2>
+    <table>
+        <tr>
+            <td></td>
+            <td><h2>Information PATIENT</h2></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td width="80"></td>
+            <td width="100">NOM PATIENT :</td><td width="10"></td>
+            <td width="120"><strong style="color: blue"> {{ fiche.hospitalisation.dossierMedical.etudiant.nom }}</strong></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>PRENOM :</td><td></td>
+            <td><strong style="color: blue">{{ fiche.hospitalisation.dossierMedical.etudiant.prenom }}</strong></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>DATE DE NAISSANCE :</td><td></td>
+            <td><strong style="color: blue">{{ fiche.hospitalisation.dossierMedical.etudiant.age|date('d-m-Y') }}</strong></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>GENRE :</td><td></td>
+            <td><strong style="color: blue">{{ fiche.hospitalisation.dossierMedical.etudiant.genre }}</strong></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>FACULTE :</td><td></td>
+            <td><strong style="color: blue">{{ fiche.hospitalisation.dossierMedical.etudiant.faculte }}</strong></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><h2>Information Hospitalisation</h2></td>
+            <td></td>
+        </tr> 
+    </table>
+
+    <table BORDER="1" text-align="center" >
+        <thead bgcolor="yellow">
+            <tr>
+                <td width="100"><strong style="color: blue">MOTIF</strong></td>
+                <td width="100"><strong style="color: blue">BILAN</strong></td>
+                <td width="100"><strong style="color: blue">CONSIGNES</strong></td>
+                <td width="100"><strong style="color: blue">DATE DEBUT SEJOUR</strong></td>
+                <td width="100"><strong style="color: blue">DATE FIN SEJOUR</strong></td>
+            </tr>
+        </thead>
+        <tr>
+            <td width="100">{{ fiche.hospitalisation.motif }}</td>
+            <td width="100">{{ fiche.bilan }}</td>
+            <td width="100">{{ fiche.regimeSuivi }}</td>
+            <td width="50">{{ fiche.hospitalisation.date|date('d-m-Y') }}</td>
+            <td width="50">{{ fiche.dateSortie|date('d-m-Y') }}</td>
+        </tr>
+    </table><br/>
+
+    <table BORDER="1" text-align="right">
+        <tr>
+            <td width="80"><strong style="color: blue">HOPITAL</strong> </td>
+            <td width="80">{{ fiche.hospitalisation.hopital }}</td>
+        </tr>  
+        <tr>
+            <td width="110"><strong style="color: blue">PAVILLON</strong></td>
+            <td width="80">{{ fiche.hospitalisation.pavillon }}</td>
+        </tr>  
+        <tr>
+            <td width="110"><strong style="color: blue">SALLE</strong> </td>
+            <td width="80">{{ fiche.hospitalisation.salle }}</td>
+        </tr>  
+        <tr>
+            <td width="110"><strong style="color: blue">LIT </strong></td>
+            <td width="80">{{ fiche.hospitalisation.lit }}</td>
+        </tr> 
+    </table>
+    <table text-align="right">
+        <tr>
+            <td height="110"></td>
+        </tr><br/>
+        <tr align="center">
+            <td width="250" align="center"><strong>Signature:</strong></td>
+        </tr>
+        
+    </table>
+</body>
+</html>
+

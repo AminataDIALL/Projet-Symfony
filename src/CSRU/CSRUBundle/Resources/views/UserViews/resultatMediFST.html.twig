@@ -1,0 +1,75 @@
+{% extends "::layout/layout.html.twig" %}
+        {% block body %}
+
+            <!--  vue de la page affichant le resultat des medicaments recherchés dans la pharmacie FST -->
+
+            <div class="row">
+                <form  name="rechercheMediFst" method="POST" action="{{ path('resultatMediFst') }}" class="navbar-form pull-right">
+                    <input type="search" name="rechercheMediFst" style="width: 300px ;height:40px"
+                           placeholder="Rechercher un médicament">
+                    <button type="submit" style="background-color: #ce8483" value ="rechercheMediFst">
+                        <span class="glyphicon glyphicon-search" style="width: 50px ;"></span>
+                    </button>
+                </form>
+            </div>
+            <h2><center>PHARMACIE DE CSRU FST</center></h2>
+                    {% if medi != null %}
+                <table class="table table-striped  table-bordered bootstrap-datatable datatable">
+                    <thead style="background-color: #e4b9b9">
+                    <th style="line-height: 210%">
+                    <center>Nom</center>
+                </th>
+                <th>
+                <center>Description  </center>
+            </th>
+            <th>
+            <center>Quantite</center>
+        </th>
+        <th>
+        <center>Prix</center>
+        </th>
+        <th>
+        <center>Date</center>
+        </th>
+        <th>
+        <center> Date de péremption</center>
+        </th>
+        <th>
+        <center> Action</center>
+        </th>
+        </thead>
+        {% for medi in medi %}
+            {% if medi.centre == 'CSRU FST' %}
+                <tr>
+                    <td>
+                <center> {{ medi.nom }}</center>
+            </td>
+            <td>
+            <center> {{ medi.description }}</center>
+        </td>
+        <td>
+        <center> {{ medi.quantite }}</center>
+        </td>
+        <td>
+        <center> {{ medi.prix }}</center>
+        </td>
+        <td>
+        <center> {{ medi.date|date('d-m-Y')}}</center>
+        </td>
+        <td>
+        <center> {{ medi.datePerime|date('d-m-Y')}}</center>
+        </td>
+        <td>
+        <center>
+            <a href="{{ path('reserver',{'id':medi.id}) }}" data-toggle="popover" title="prendre" data-content="prendre"><span class="glyphicon glyphicon-shopping-cart"  ></span></a>
+        </center>
+        </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+        {% else %}
+            <center><h3 style='color: red'>Médicament introuvable!!!</h3><br/> veuillez vérifier votre orthographe</center>
+            {% endif %}
+        </table>
+
+        {% endblock %}

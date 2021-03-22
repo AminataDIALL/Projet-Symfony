@@ -1,0 +1,61 @@
+{% extends "::layout/layout.html.twig" %}
+{% block body %}
+
+    <!--  vue de la page affichant la liste des rdv -->
+
+    <a href="{{ path('ajoutRdv',{'id':dossier.id}) }}" ><button class=" btn btn-round btn-info">Créer un rendez-vous</button></a>
+
+    <h2><center>Les rendez-vous de {{ dossier.etudiant.nom }} {{ dossier.etudiant.prenom }}</center></h2>
+
+    <section class="table-responsive">
+        <table width="100%" class="table table-striped  table-bordered bootstrap-datatable datatable">
+            <thead style="background-color: #e4b9b9">
+            <th style="line-height: 210%">
+            <center>Date rendez-vous</center>
+            </th>
+            <th>
+            <center>  Motif</center>
+            </th>
+            <th>
+            <center>Personnel Chargé</center>
+            </th>
+            <th>
+            <center> Centre</center>
+            </th>
+
+            </thead>
+            {% for rdv in rdv %}
+                <tr>
+                    <td>
+                <center> {{ rdv.date|date('d-m-Y')}}</center>
+                </td>
+                <td>
+                <center> {{ rdv.motif }}</center>
+                </td>
+                <td>
+                <center> {{ rdv.utilisateur.username }}</center>
+                </td>
+                <td>
+                <center> {{ rdv.dossierMedical.centre }}</center>
+                </td>
+
+                </tr>
+            {% endfor %}
+        </table>
+
+        <div class="pagination pagination-centered">
+            <ul>
+                <li><a href="#">Prev</a></li>
+                <li class="active">
+                    <a href="#">1</a>
+                </li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">Next</a></li>
+            </ul>
+        </div>  
+    </section>   
+
+{% endblock %}
+

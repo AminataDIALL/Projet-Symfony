@@ -1,0 +1,23 @@
+{% extends "::layout/layout.html_1.twig" %}
+{% block body %}
+    <div class="row alert alert-danger" style="text-align: center">
+            {% for m in app.session.Flashbag.get('centre') %}
+                <h3>
+                    {{ m }}
+                </h3>
+            {% endfor %}
+      </div>
+    <center> <h2> Ajout d'un CSRU</h2></center><br/>
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            {{ form_start(form) }}       
+            {{ form_label(form.nom) }}
+            {{ form_widget(form.nom ,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.nom) }}
+            <br/><center><button class="btn btn-primary" type="submit">Ajouter</button></center>
+        </div>
+            {{ form_end(form) }}
+        <div class="col-lg-4"></div>
+    </div>
+{% endblock %}

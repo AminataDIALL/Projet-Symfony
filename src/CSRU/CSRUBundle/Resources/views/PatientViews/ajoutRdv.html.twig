@@ -1,0 +1,36 @@
+{% extends "::layout/layout.html.twig" %}
+{% block body %}
+
+    <!--  vue de la page de creation d'un rendez-vous -->
+
+    <center> <h2> Création d'un rendez-vous</h2></center><br/>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            {{ form_start(form) }}
+            <div class="form-group">
+                {{ form_label(form.date) }}
+                {{ form_widget(form.date ,{'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.date) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.motif) }}
+                {{ form_widget(form.motif ,{'attr':{'class':'form-control','heigth':'200px'}}) }}
+                {{ form_errors(form.motif) }}
+            </div>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-lg-6">
+            <button class="btn btn-round btn-info" type="submit" style="float: right">Valider</button>
+            {{ form_end(form) }}
+        </div>
+        <div class="col-lg-6">
+            <a href="{{ path('dossierMedical',{'id':dossier.id}) }}"><button class="btn btn-round btn-warning"> Annuler </button> </a>
+        </div>
+    </div>
+    <br/>
+
+{% endblock %}

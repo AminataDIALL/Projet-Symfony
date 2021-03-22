@@ -1,0 +1,12 @@
+{% extends "::layout/layout.html_1.twig" %}
+{% block body %}
+    <center>
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="flash-{{ type }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %} 
+    </center>
+    {% endblock %}

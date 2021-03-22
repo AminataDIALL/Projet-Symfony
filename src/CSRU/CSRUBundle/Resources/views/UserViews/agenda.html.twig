@@ -1,0 +1,51 @@
+{% extends "::layout/layout.html.twig" %}
+{% block body %}
+
+    <!--  vue de la page affichant la liste des rdv -->
+
+    <center><h2>Mon agenda</h2></center>
+    <section class="table-responsive">
+        <table width="100%" class="table table-striped  table-bordered bootstrap-datatable datatable">
+            <thead style="background-color: #e4b9b9">
+            <th style="line-height: 210%">
+            <center>Date rendez-vous</center>
+            </th>
+            <th>
+            <center>  Motif</center>
+            </th>
+            <th>
+            <center>Nom patient</center>
+            </th>
+            <th>
+            <center>Prénom patient</center>
+            </th>
+            <th>
+            <center> Centre</center>
+            </th>
+
+            </thead>
+            {% for agenda in agenda %}
+                <tr>
+                    <td>
+                <center> {{ agenda.date|date('d-m-Y à H:i:s')}}</center>
+                </td>
+                <td>
+                <center> {{ agenda.motif }}</center>
+                </td>
+                <td>
+                <center> {{ agenda.dossierMedical.etudiant.nom }}</center>
+                </td>
+                <td>
+                <center> {{ agenda.dossierMedical.etudiant.prenom }}</center>
+                </td>
+                <td>
+                <center> {{ agenda.dossierMedical.centre }}</center>
+                </td>
+
+                </tr>
+            {% endfor %}
+        </table> 
+    </section>   
+
+{% endblock %}
+

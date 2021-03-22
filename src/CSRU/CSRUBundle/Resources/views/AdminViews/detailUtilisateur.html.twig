@@ -1,0 +1,52 @@
+{% extends "::layout/layout.html_1.twig" %}
+{% block body %}
+        <div class="col-lg-2"></div>
+        <div class="col-lg-4">
+            <center>  
+                <h4> Détails sur l'utilisateur {{ user.username }}</h4>
+                <table style="width:188%; height: 200px" class=" table-bordered table-bordered table-striped table-condensed">
+                    <tr>
+                        <td><center><img src="{{asset(user.profil.image.AssetPath) }}" alt="image produit" width="200" height="110"></center></td>
+                    <td></td>
+                    </tr>
+                    <tr>
+                        <td  style="line-height: 210%"><font size='4' face="georgia" color="black">Nom et Prénom</font></td>
+                        <td style="line-height: 210%"><center>{{ user.username }}</center></td>
+                    </tr>
+                    <tr>
+                        <td style="line-height: 210%"><font size='4' face="georgia" color="black">Date de naissance</font></td>
+                        <td style="line-height: 210%"><center>{{ user.profil.age|date('d-m-Y') }}</center></td>
+                    </tr>
+                    <tr>
+                        <td style="line-height: 210%"><font size='4' face="georgia" color="black">Adresse</font></td>
+                        <td style="line-height: 210%"><center>{{ user.profil.adresse }}</center></td>
+                    </tr>
+                    <tr>
+                        <td style="line-height: 210%"><font size='4' face="georgia" color="black">Téléphone</font></td>
+                        <td style="line-height: 210%"><center>{{ user.profil.telephone}}</center></td>
+                    </tr>
+                    <tr>
+                        <td style="line-height: 210%"><font size='4' face="georgia" color="black">Email</font></td>
+                        <td style="line-height: 210%"><center>{{ user.email}}</center></td>
+                    </tr>
+                    <tr>
+                        <td style="line-height: 210%"><font size='4' face="georgia" color="black">Lieu de travail</font></td>
+                        <td style="line-height: 210%"><center>{{ user.profil.centre}}</center></td>
+                    </tr>
+                    <tr>
+                        <td style="line-height: 210%"><font size='4' face="georgia" color="black">Titre</font></td>
+                        <td style="line-height: 210%"><center>{{ user.profil.profession}}</center></td>
+                    </tr>
+                </table></center>
+            <br/>
+            <center><a href="{{ path('listeUtilisateur') }}"><button class='btn btn-danger' type='submit'> retour</button></a></center>
+        </div>
+        <div class="col-lg-2"></div>
+       <br/><br/>           
+
+
+
+
+
+
+{% endblock %}

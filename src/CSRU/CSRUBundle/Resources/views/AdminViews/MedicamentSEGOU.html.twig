@@ -1,0 +1,63 @@
+{% extends "::layout/layout.html_1.twig" %}
+{% block body %}
+        <a href="{{ path('ajoutMedicament')}}" style="float: right"><button class="btn btn-round btn-info">Ajouter un médicament</button></a>
+    <h2><center>PHARMACIE SEGOU</center></h2>
+    <section class="table-responsive">
+        <table class="table table-bordered table-bordered table-striped table-condensed">
+            <thead style="background-color: #e4b9b9">
+            <th style="line-height: 210%">
+            <center>Nom</center>
+            </th>
+            <th>
+            <center>Description  </center>
+            </th>
+            <th>
+            <center>Quantite</center>
+            </th>
+            <th>
+            <center>Prix</center>
+            </th>
+            <th>
+            <center>Date</center>
+            </th>
+            <th>
+            <center> Date de péremption</center>
+            </th>
+            <th>
+            <center> Action</center>
+            </th>
+            </thead>
+            {% for medi in medi %}
+                {% if medi.centre == 'CSRU SEGOU' %}
+                <tr>
+                <td>
+                <center> {{ medi.nom }}</center>
+                </td>
+                <td>
+                <center> {{ medi.description }}</center>
+                </td>
+                <td>
+                <center> {{ medi.quantite }}</center>
+                </td>
+                <td>
+                <center> {{ medi.prix }}</center>
+                </td>
+                <td>
+                <center> {{ medi.date|date('d-m-Y')}}</center>
+                </td>
+                <td>
+                <center> {{ medi.datePerime|date('d-m-Y')}}</center>
+                </td>
+                <td>
+                <center>
+                    <a href="{{ path('modifierMedicamentSEGOU',{'id':medi.id})}}" data-toggle="popover" title="Modifier" data-content="Modifier"><button class="btn btn-success"><span class="glyphicon glyphicon-edit" ></span></button></a>
+                    <a href="{{ path('supprimerMedicamentSEGOU',{'id':medi.id})}}" onclick ="return(confirm('Etes-vous certain de vouloir supprimer ce médicament?'));" data-toggle="popover" title="Supprimer" data-content="Supprimer"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button></a>
+                </center>
+                </td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+    </section>  
+<br/>          
+{% endblock %}

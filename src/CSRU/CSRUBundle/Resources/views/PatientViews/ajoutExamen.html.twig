@@ -1,0 +1,54 @@
+{% extends "::layout/layout.html.twig" %}
+{% block body %}
+
+    <!--  vue de la page d'ajout d'un examen d'un dossier Medical -->
+
+    <center> <h2> Examen</h2></center><br/>
+    <div class="row">
+        <div class="form-group col-lg-1"></div>
+        {{ form_start(form) }}
+        <div class="form-group col-lg-5">
+            {{ form_label(form.taille) }}
+            {{ form_widget(form.taille ,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.taille) }}
+
+            {{ form_label(form.poids) }}
+            {{ form_widget(form.poids ,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.poids) }}
+
+            {{ form_label(form.temperature) }}
+            {{ form_widget(form.temperature ,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.temperature) }}
+
+            {{ form_label(form.tension) }}
+            {{ form_widget(form.tension ,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.tension) }}
+
+        </div>
+        <div class="col-lg-5">
+            {{ form_label(form.type) }}
+            {{ form_widget(form.type ,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.type) }}
+
+            {{ form_label(form.resultat) }}
+            {{ form_widget(form.resultat ,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.resultat) }}
+
+            {{ form_label(form.groupe_saguin) }}
+            {{ form_widget(form.groupe_saguin ,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.groupe_saguin) }}
+
+        </div>
+        <div class="form-group col-lg-1"></div>
+
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <button class="btn btn-round btn-info" type="submit" style="float: right">Valider</button>
+            {{ form_end(form) }}
+        </div>
+        <div class="col-lg-6">
+            <a href="{{ path('dossierMedical',{'id':dossier.id}) }}"><button class="btn btn-round btn-warning"> Annuler </button> </a>
+        </div>
+    </div>
+{% endblock %}

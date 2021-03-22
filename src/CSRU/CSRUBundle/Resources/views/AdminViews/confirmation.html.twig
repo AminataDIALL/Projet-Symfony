@@ -1,0 +1,18 @@
+{% extends "::layout/layout.html_1.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+   
+     
+{% block body %}
+    
+            ajouter avec succès
+                
+        <center>
+       <p> {{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+    {% if targetUrl %}
+    <a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a>
+    {% endif %}
+    </center> 
+    
+{% endblock %}

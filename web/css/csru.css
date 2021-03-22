@@ -1,0 +1,111 @@
+uls {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: red;
+}
+
+lis {
+    float: left;
+}
+
+lis a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+lis a:hover, .dropdown:hover .dropbtn {
+    background-color: #e5e5e5;
+}
+
+lis.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content-csru {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content-csru a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content-csru a:hover {background-color: #e4b9b9}
+
+.dropdown:hover .dropdown-content-csru {
+    display: block;
+}
+
+.navbar-csru {
+                background-color: #800;
+                border-color: #800;
+             }
+                
+
+.bureau-csru {
+    background-color: #800;
+    border-color: #800;
+}
+
+.interface-csru {
+    background-color: #f9f2f4; 
+    height: 1000px;
+         }
+.interface-csru1 {
+    background-color: #eee; 
+         }
+
+.bureau-csru a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.bureau-csru a:hover {background-color: #e4b9b9}
+
+
+div1 {
+    width: 100px;
+    height: 100px;
+    background: red;
+    transition: width 2s;
+}
+
+div1:hover {
+    width: 300px;
+}
+
+.login-font {
+width: 300px;
+height: 300px;
+color:black;
+background-color:white;
+background-image:url(images/login-font.png);
+background-size: 150px;
+}
+
+.square {
+  width: 300px;
+  height: 300px;
+  background-image: url(images/login-font.png);
+  border: solid 2px;
+  text-shadow: white 0px 0px 2px;
+  font-size: 16px;
+  background-size: 150px;
+}
+

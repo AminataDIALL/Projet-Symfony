@@ -1,0 +1,13 @@
+{% extends "::layout/layout.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block body %}
+<div class="fos_user_user_show">
+    <center>
+    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+    <p> Téléphone: {{ user.profil.telephone }}</p>
+    <p> Adresse: {{ user.profil.adresse }}</p>
+    <p> Profession: {{ user.profil.profession }}</p>
+    </center>
+</div>
+{% endblock body %}

@@ -1,0 +1,34 @@
+{% extends "::layout/layout.html.twig" %}
+{% block body %}
+
+    <!--  vue de la page affichant la liste des hospitalisations d'un dossier Medical -->
+    
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <a href="{{ path('dossierMedical',{'id':dossier.id}) }}"><button class="btn btn-round btn-success"> RETOUR </button> </a>
+            <a href="{{ path('ajoutHospitalisation',{'id':dossier.id}) }}"><button class="btn btn-round btn-info"> HOSPITALISER </button></a>
+        </div>
+        <div class="col-lg-1"></div>
+    </div><br/>
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 white-panel">
+            <center><h3><font style="color: blue">Dossier Medical de {{ dossier.etudiant.nom }} {{ dossier.etudiant.prenom }}</font></h3></center><br/><br/>
+                    {% if hospitalisations|length == null %}
+                <center> <h3>Aucune hospitalisation n'est faite pour le moment  </h3></center>
+                {% else %}
+                {% endif %}
+            <table class="table table-bordered table-bordered table-striped table-condensed">
+                <tr>
+                    <td> 
+                        {% for hospitalisation in hospitalisations %}
+                    <center><a href="{{ path('detailHospitalisation',{'id':hospitalisation.id}) }}" data-toggle="popover" title="détail" data-content="détail">Les hospitalisations à la date du {{ hospitalisation.date|date('d-m-Y')}}</a></center>
+                    </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="col-lg-1"></div><br/>  
+    </div>
+{% endblock %}

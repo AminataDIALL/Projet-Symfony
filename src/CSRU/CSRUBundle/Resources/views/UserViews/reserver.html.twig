@@ -1,0 +1,32 @@
+{% extends "::layout/layout.html.twig" %}
+{% block body %}
+
+    <!--  vue de la page affichant le formulaire de prendre  des medicaments -->
+
+    {{ form_start(form) }}
+    <div lass = "row">
+        <div class="row alert alert-danger" style="text-align: center">
+            {% for m in app.session.Flashbag.get('reservation') %}
+                <h3>
+                    {{ m }}
+                </h3>
+            {% endfor %}
+        </div>
+
+        <div class="col-lg-4"></div>
+        <div class="form-group">
+            <div class="col-lg-4"> 
+                <h4><font size="4" face="arial" style="color: #08C">Choisissez la quantité de médicament</font></h4><br/>
+                {{ form_label(form.quantite) }} <font size="3" color="orange"></font>
+                {{ form_widget(form.quantite ,{'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.quantite) }}<br/>
+                <center><button class="btn btn-primary" type="submit">Prendre</button></center>
+                    {{ form_end(form) }}
+            </div>
+        </div>
+        </br>
+
+        <div class="col-lg-4"></div>
+    </div>
+
+{% endblock %}

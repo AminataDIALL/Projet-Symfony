@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="wiewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+        <title>{% block title %}Bienvenue sur le site du CSRU{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" />
+            <link rel="stylesheet" href="{{ asset('css/bootstrap-theme.css') }}" type="text/css" />
+            <link rel="stylesheet" href="{{ asset('css/main.css') }}" type="text/css" />
+            <link rel="stylesheet" href="{{ asset('css/csru.css') }}" type="text/css" />
+            <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}" type="text/css" />
+            <link href="assets/css/bootstrap.css" rel="stylesheet">
+            <!--external css-->
+            <link href="{{asset('assets/font-awesome/css/font-awesome.css')}}" rel="stylesheet" />
+            <link rel="stylesheet" type="text/css" href="{{asset('assets/css/zabuto_calendar.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{asset('assets/js/gritter/css/jquery.gritter.css') }}" />
+            <link rel="stylesheet" type="text/css" href="{{asset('assets/lineicons/style.css') }}">    
+
+            <!-- Custom styles for this template -->
+            <link href="{{asset('assets/css/style.css') }}" rel="stylesheet">
+            <link href="{{asset('assets/css/style-responsive.css') }}" rel="stylesheet">
+
+            <script src="{{asset('assets/js/chart-master/Chart.js') }}"></script>
+        {% endblock %}
+    </head>
+    <section id="container" >
+        <!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+        <!--header start-->
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+            <header class="header black-bg">
+                <div class="sidebar-toggle-box">
+                    <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Barre de navigation"></div>
+                </div>
+                <!--logo start-->
+                <a href="{{ path('page_accueil') }}" class="logo"><b>CSRU-MALI</b></a>
+                <!--logo end-->
+                <div class="nav notify-row" id="top_menu">
+
+                    <form  name="recherchePATIENT" method="POST" action="{{ path('resultatPatient') }}" class="nav pull-right top-menu">
+                        <input type="search" name="recherchePATIENT" style="width: 180px ;height:38px"
+                               placeholder="Rechercher un patient">
+                        <button type="submit" class="btn btn-round btn-info" value ="recherchePATIENT">
+                            <span class="glyphicon glyphicon-search" style="width: 50px ;"></span>
+                        </button>
+                    </form>
+
+                </div>
+
+
+                <div class="top-menu">
+                    <ul class="nav pull-right">
+                        {% if app.user.profil != null %}
+                            <center>
+                                <lis class="dropdown">
+                                    <a href="#"><font color="black"><b class="caret"></b></a>
+                                    <uls class="dropdown-content-csru">
+                                        <li><a href="{{ path('fos_user_security_logout') }}">Deconnexion</a></li>
+                                        <li><a href="{{ path('fos_user_profile_show') }}">Mes informations</a></li>
+                                        <li><a href="{{ path('fos_user_profile_edit') }}">Editer mes informations</a></li>
+                                        <li><a href="{{ path('fos_user_change_password') }}">Changer mot de passe</a></li>
+                                    </uls>
+                                </lis>
+                                <img src="{{asset(app.user.profil.image.AssetPath) }}" alt="image produit" width="45" height="45" class="img-circle">
+                            {% endif %}
+                        {% else %}
+                            <lis class="dropdown">
+                                <a href="#" class="glyphicon glyphicon-user"><b></b></a>
+                                <uls class="dropdown-content-csru">
+                                    <li><a href="{{ path('fos_user_security_logout') }}">Deconnexion</a></li>
+                                    <li><a href="{{ path('fos_user_profile_show') }}">Mes informations</a></li>
+                                    <li><a href="{{ path('fos_user_profile_edit') }}">Editer mes informations</a></li>
+                                    <li><a href="{{ path('fos_user_change_password') }}">Changer mot de passe</a></li>
+                                </uls>
+                            </lis>
+
+                        {% endif %}
+                </ul>
+            </div>
+        </header>
+        <!--header end-->
+
+        <!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** -->
+        <!--sidebar start-->
+        <aside>
+            <div id="sidebar"  class="nav-collapse ">
+                <!-- sidebar menu start-->
+                <ul class="sidebar-menu" id="nav-accordion">
+
+                    <p class="centered"><a href="profile.html"><img src="{{asset('http://localhost/CSRU/web/images/LOGO.png')}}" class="img-circle" style="width: 40%; height: 62px"></a></p>
+                    <h5 class="centered">CSRU</h5>
+
+                    <li class="mt">
+                        <a class="active" href="{{ path('page_accueil') }}">
+                            <i class="glyphicon glyphicon-home"></i>
+                            <span>ACCUEIL</span>
+                        </a>
+                    </li>
+
+                    <li class="">
+                        <a href="{{ path('listePatient') }}">
+                            <i class="fa fa-male"></i>
+                            <span>PATIENTS</span>
+                        </a>
+                    </li>
+
+                    <li class="sub-menu">
+                        <a href="javascript:;" >
+                            <i class="fa fa-male"></i>
+                            <span>ETUDIANTS</span>
+                        </a>
+                        <ul class="sub">
+                            <li class="sub-menu">
+                                <a href="javascript:;">
+                                    <span>USTT-Bamako</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href="{{ path('listeEtudiant') }}">FST-Bamako</a></li>
+                                    <li><a href="#">ISA-Bamako</a></li>
+                                    <li><a href="#">FAPH-Bamako</a></li>
+                                    <li><a href="#">FMOS-Bamako</a></li>
+                                </ul>
+                            </li>
+                            <li class="sub-menu">
+                                <a href="javascript:;">
+                                    <span>USSG-Bamako</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href="#">FSEG-Bamako</a></li>
+                                    <li><a href="#">IUG-Bamako</a></li>
+                                </ul>
+                            </li>
+                            <li class="sub-menu">
+                                <a href="javascript:;">
+                                    <span>USJP-Bamako</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href="#">FDPU-Bamako</a></li>
+                                    <li><a href="#">FDPRI-Bamako</a></li>
+                                </ul>
+                            </li>
+                            <li class="sub-menu">
+                                <a href="javascript:;">
+                                    <span>ULSH-Bamako</span>
+                                </a>
+                                <ul class="sub">
+                                    <li><a href="#">FLSL-Bamako</a></li>
+                                    <li><a href="#">FHG-Bamako</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">U-SEGOU</a></li>
+                        </ul>
+                    </li>
+                    {% if app.user.profil.centre == "CENOU" %}
+                        <li class="sub-menu">
+                            <a href="javascript:;" >
+                                <i class="glyphicon glyphicon-king"></i>
+                                <span>PHARMACIES</span>
+                            </a>
+                            <ul class="sub">
+                                <li><a href="{{ path('pharmacieFST') }}">PHARMACIE CSRU FST</a></li>
+                                <li><a href="{{ path('pharmacieIPR') }}">PHARMACIE CSRU IPR</a></li>
+                                <li><a href="{{ path('pharmacieSEGOU') }}">PHARMACIE CSRU SEGOU</a></li>
+                            </ul>
+                        </li>
+                    {% endif%}
+                    {% if app.user.profil.centre == "CSRU FST" %}
+                        <li class="">
+                            <a href="{{ path('pharmacieFST') }}">
+                                <i class="fa fa-hdd-o"></i>
+                                <span>PHARMACIE</span>
+                            </a>
+                        </li>
+                    {% endif%}
+                    {% if app.user.profil.centre == "CSRU IPR" %}
+                        <li class="">
+                            <a href="{{ path('pharmacieIPR') }}">
+                                <i class="fa fa-hdd-o"></i>
+                                <span>PHARMACIE</span>
+                            </a>
+                        </li>
+                    {% endif%}
+                    {% if app.user.profil.centre == "CSRU SEGOU" %}
+                        <li class="">
+                            <a href="{{ path('pharmacieSEGOU') }}">
+                                <i class="fa fa-hdd-o"></i>
+                                <span>PHARMACIE</span>
+                            </a>
+                        </li>
+                    {% endif%}
+                    <li class="sub-menu">
+                        <a href="javascript:;" >
+                            <i class="fa fa-hospital-o"></i>
+                            <span>CENTRES</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="#">CSRU FST</a></li>
+                            <li><a href="#">CSRU IPR</a></li>
+                            <li><a href="#">CSRU SEGOU</a></li>
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a href="{{ path('agenda') }}">
+                            <i class="fa fa-calendar"></i>
+                            <span>MON AGENDA</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="{{ path('forum') }}">
+                            <i class="fa fa-group"></i>
+                            <span>FORUM</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="{{ path('page_accueilAdmin') }}">
+                            <i class="fa fa-key"></i>
+                            <span>INTRANET</span>
+                        </a>
+                    </li>
+
+                </ul>
+                <!-- sidebar menu end-->
+            </div>
+        </aside>
+        <!--sidebar end-->
+
+        <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+                <div class="row">
+                    <div class="col-lg-9 main-chart">
+                        {% block body %}
+                        {% endblock %}
+                    </div>
+                    <div class="col-lg-3 ds">
+                        <!--COMPLETED ACTIONS DONUTS CHART-->
+                        <h3>EMPLOI DU TEMPS CSRU</h3>
+
+                        <!-- First Action -->
+                        <div class="desc">
+                            <div class="thumb">
+                                <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+                            </div>
+                            <div class="details">
+                                <p>LUNDI<br/>
+                                    08 h - 13 h : Ouvert<br/>
+                                    13 h - 14 h 30 : Repos<br/>
+                                    14 h 30 - 18h 00 : Ouvert<br/>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Second Action -->
+                        <div class="desc">
+                            <div class="thumb">
+                                <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+                            </div>
+                            <div class="details">
+                                <p>MARDI<br/>
+                                    08 h - 13 h : Ouvert<br/>
+                                    13 h - 14 h 30 : Repos<br/>
+                                    14 h 30 - 18h 00 : Ouvert<br/>                                
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Third Action -->
+                        <div class="desc">
+                            <div class="thumb">
+                                <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+                            </div>
+                            <div class="details">
+                                <p>MERCREDI<br/>
+                                    08 h - 13 h : Ouvert<br/>
+                                    13 h - 14 h 30 : Repos<br/>
+                                    14 h 30 - 18h 00 : Ouvert<br/>                                
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Fourth Action -->
+                        <div class="desc">
+                            <div class="thumb">
+                                <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+                            </div>
+                            <div class="details">
+                                <p>JEUDI<br/>
+                                    08 h - 13 h : Ouvert<br/>
+                                    13 h - 14 h 30 : Repos<br/>
+                                    14 h 30 - 18h 00 : Ouvert<br/>                                
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Fifth Action -->
+                        <div class="desc">
+                            <div class="thumb">
+                                <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+                            </div>
+                            <div class="details">
+                                <p>VENDREDI<br/>
+                                    08 h - 11 h 30 : Ouvert<br/>
+                                    11 h 30 - 14 h 30 : Repos<br/>
+                                    14 h 30 - 18h 00 : Ouvert<br/>                                
+                                </p>
+                            </div>
+                        </div>
+                        <!-- SIX Action -->
+                        <div class="desc">
+                            <div class="thumb">
+                                <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+                            </div>
+                            <div class="details">
+                                <p>SAMEDI<br/>
+                                    08 h - 13 h : Ouvert<br/>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- SEVEN Action -->
+                        <div class="desc">
+                            <div class="thumb">
+                                <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+                            </div>
+                            <div class="details">
+                                <p>DIMANCHE<br/>
+                                    08 h - 18 h : Chômé<br/>
+                                </p>
+                            </div>
+                        </div>
+                    </div>   
+                </div> 
+            </section>
+        </section>
+
+
+        <!--main content end-->
+        <!--footer start-->
+        <footer class="site-footer">
+            <div class="text-center">
+                2017 - FST-MALI
+                <a href="{{ path('page_accueil') }}" class="go-top">
+                    <i class="fa fa-angle-up"></i>
+                </a>
+            </div>
+        </footer>
+        <!--footer end-->
+    </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="{{asset('assets/js/jquery.js') }}"></script>
+    <script src="{{asset('assets/js/jquery-1.8.3.min.js') }}"></script>
+    <script src="{{asset('assets/js/bootstrap.min.js') }}"></script>
+    <script class="include" type="text/javascript" src="{{asset('assets/js/jquery.dcjqaccordion.2.7.js') }}"></script>
+    <script src="{{asset('assets/js/jquery.scrollTo.min.js') }}"></script>
+    <script src="{{asset('assets/js/jquery.nicescroll.js') }}" type="text/javascript"></script>
+    <script src="{{asset('assets/js/jquery.sparkline.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('css/moyen.js') }}"></script>
+
+
+    <!--common script for all pages-->
+    <script src="{{asset('assets/js/common-scripts.js') }}"></script>
+
+    <script type="text/javascript" src="{{asset('assets/js/gritter/js/jquery.gritter.js') }}"></script>
+    <script type="text/javascript" src="{{asset('assets/js/gritter-conf.js') }}"></script>
+
+    <!--script for this page-->
+    <script src="{{asset('assets/js/sparkline-chart.js') }}"></script>    
+    <script src="{{asset('assets/js/zabuto_calendar.js') }}"></script>	
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var unique_id = $.gritter.add({
+                // (string | mandatory) the heading of the notification
+                title: 'BIENVENUE DANS CSRU-MALI!',
+                // (string | mandatory) the text inside the notification
+                text: 'Notre objectif est d\'assurer la santé dans les milieux universitaires du Mali.',
+                // (string | optional) the image to display on the left
+                image: '{{asset('http://localhost/CSRU/web/images/LOGO.png')}}',
+                // (bool | optional) if you want it to fade out on its own or just sit there
+                sticky: false,
+                // (int | optional) the time you want it to be alive for before fading out
+                time: '00:01:10',
+                // (string | optional) the class name you want to apply to that specific message
+                class_name: 'my-sticky-class'
+            });
+
+            return false;
+        });
+    </script>
+
+    <script type="application/javascript">
+        $(document).ready(function () {
+        $("#date-popover").popover({html: true, trigger: "manual"});
+        $("#date-popover").hide();
+        $("#date-popover").click(function (e) {
+        $(this).hide();
+        });
+
+        $("#my-calendar").zabuto_calendar({
+        action: function () {
+        return myDateFunction(this.id, false);
+        },
+        action_nav: function () {
+        return myNavFunction(this.id);
+        },
+        ajax: {
+        url: "show_data.php?action=1",
+        modal: true
+        },
+        legend: [
+        {type: "text", label: "Special event", badge: "00"},
+        {type: "block", label: "Regular event", }
+        ]
+        });
+        });
+
+
+        function myNavFunction(id) {
+        $("#date-popover").hide();
+        var nav = $("#" + id).data("navigation");
+        var to = $("#" + id).data("to");
+        console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+        }
+    </script>
+
+</body>
+</html>

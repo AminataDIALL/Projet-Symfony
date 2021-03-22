@@ -1,0 +1,48 @@
+{% extends "::layout/layout.html.twig" %}
+{% block body %}
+    
+    <!--  vue de la page d'ajout d'une hospitalisation d'un dossier Medical -->
+    
+    <center> <h2> Hospitalisation</h2></center><br/>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            {{ form_start(form) }}
+            <div class="form-group">
+
+                {{ form_label(form.hopital) }}
+                {{ form_widget(form.hopital,{'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.hopital) }}
+
+                {{ form_label(form.pavillon) }}
+                {{ form_widget(form.pavillon,{'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.pavillon) }}
+
+                {{ form_label(form.salle) }}
+                {{ form_widget(form.salle,{'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.salle) }}
+
+                {{ form_label(form.lit) }}
+                {{ form_widget(form.lit,{'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.lit) }}
+
+                {{ form_label(form.motif) }}
+                {{ form_widget(form.motif,{'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.motif) }}
+
+            </div>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <button class="btn btn-round btn-info" type="submit" style="float: right">Valider</button>
+            {{ form_end(form) }}
+        </div>
+        <div class="col-lg-6">
+            <a href="{{ path('dossierMedical',{'id':dossier.id}) }}"><button class="btn btn-round btn-warning"> Annuler </button> </a>
+        </div>
+    </div>
+<br/>
+
+{% endblock %}

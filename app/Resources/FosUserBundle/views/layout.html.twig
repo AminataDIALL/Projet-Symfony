@@ -1,0 +1,27 @@
+ <head>
+        <meta name="wiewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+        <title>{% block title %}Bienvenue sur le site du CSRU{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" type="text/css" />
+            <link rel="stylesheet" href="{{ asset('css/bootstrap-theme.css') }}" type="text/css" />
+            <link rel="stylesheet" href="{{ asset('css/main.css') }}" type="text/css" />
+            <link rel="stylesheet" href="{{ asset('css/csru.css') }}" type="text/css" />
+            <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}" type="text/css" />
+        {% endblock %}
+    </head>
+    <body style="background-image: url('../images/cle.jpg');background-repeat:no-repeat;background-attachment:fixed;background-position:70% 80%;background-size: 500px 500px;">
+    {% block body%}
+            
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="flash-{{ type }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+    {% endblock %}
+    </body>

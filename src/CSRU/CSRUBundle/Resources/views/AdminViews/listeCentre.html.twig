@@ -1,0 +1,31 @@
+{% extends "::layout/layout.html_1.twig" %}
+{% block body %}
+        <a href="{{ path('ajoutCentre')}}" style="float: right"><button class="btn btn-primary">Ajouter un CSRU</button></a>
+    <h2><center>Les CSRUs</center></h2>
+    <section class="table-responsive">
+        <table class="table table-bordered table-bordered table-striped table-condensed">
+            <thead style="background-color: #e4b9b9">
+            <th style="line-height: 210%">
+            <center>Nom</center>
+            </th>
+            <th>
+            <center> Action</center>
+            </th>
+            </thead>
+            {% for centre in centre %}
+                <tr>
+                <td>
+                <center> {{ centre.nom }}</center>
+                </td>
+                <td>
+                <center>
+                    <a href="{{ path('modifierCentre',{'id':centre.id})}}" data-toggle="popover" title="Modifier" data-content="Modifier"><button class="btn btn-success"><span class="glyphicon glyphicon-edit" ></span></button></a>
+                    <a href="{{ path('supprimerCentre',{'id':centre.id})}}" onclick ="return(confirm('Etes-vous certain de vouloir supprimer ce centre?'));" data-toggle="popover" title="Supprimer" data-content="Supprimer"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button></a>
+                </center>
+                </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </section>  
+<br/>          
+{% endblock %}

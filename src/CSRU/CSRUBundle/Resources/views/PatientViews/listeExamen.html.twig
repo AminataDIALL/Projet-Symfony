@@ -1,0 +1,34 @@
+{% extends "::layout/layout.html.twig" %}
+{% block body %}
+
+     <!--  vue de la page affichant la liste des examen d'un dossier Medical -->
+    
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <a href="{{ path('dossierMedical',{'id':dossier.id}) }}"><button class="btn btn-round btn-success"> RETOUR </button> </a>
+            <a href="{{ path('ajoutExamen',{'id':dossier.id}) }}"><button class="btn btn-round btn-info"> Ajouter un nouveau </button></a>
+        </div>
+        <div class="col-lg-1"></div>
+    </div><br/>
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 white-panel">
+            <center><h3><font style="color: blue">Dossier Medical de {{ dossier.etudiant.nom }} {{ dossier.etudiant.prenom }}</font></h3></center><br/><br/>
+                    {% if examens|length == null %}
+                <center> <h3>Aucun examen n'est enrégistré pour le moment  </h3></center>
+                {% else %}
+                {% endif %}
+            <table class="table table-bordered table-bordered table-striped table-condensed">
+                <tr>
+                    <td> 
+                        {% for examen in examens %}
+                    <center><a href="{{ path('detailExamen',{'id':examen.id}) }}" data-toggle="popover" title="détail" data-content="détail">Les examens de {{ examen.dossierMedical.etudiant.nom }} {{ examen.dossierMedical.etudiant.prenom }} à la date du {{ examen.date|date('d-m-Y')}}</a></center>
+                    </td>
+                    </tr>    
+                {% endfor %}
+            </table>
+        </div>
+        <div class="col-lg-1"></div> 
+    </div>
+{% endblock %}

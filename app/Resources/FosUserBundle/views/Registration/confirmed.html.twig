@@ -1,0 +1,10 @@
+{% extends "FOSUserBundle::layout.html_1.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block body %}
+   <center>
+       <p>Merci {{ user.username }},L'utilisateur a été ajouté avec succès</p>
+    {% if targetUrl %}
+    <a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a>
+    {% endif %}
+    </center>
+{% endblock %}

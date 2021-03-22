@@ -1,0 +1,271 @@
+
+# ici les differentes views côté users
+  
+page_accueil:
+    path:     /CSRU/accueil
+    defaults: { _controller: CSRUCSRUBundle:User:accueil }
+    
+listeEtudiant:
+    path:     /CSRU/liste_etudiant
+    defaults: { _controller: CSRUCSRUBundle:User:listeEtudiant }
+
+pharmacie:
+    path:     /CSRU/pharmacie
+    defaults: { _controller: CSRUCSRUBundle:User:pharmacie }
+    
+pharmacieFST:
+    path:     /CSRU/pharmacie_csru_fst
+    defaults: { _controller: CSRUCSRUBundle:User:pharmacieFST }
+
+pharmacieIPR:
+    path:     /CSRU/pharmacie_csru_ipr
+    defaults: { _controller: CSRUCSRUBundle:User:pharmacieIPR }
+    
+pharmacieSEGOU:
+    path:     /CSRU/pharmacie_csru_segou
+    defaults: { _controller: CSRUCSRUBundle:User:pharmacieSEGOU }
+    
+reserver:
+    path:     /CSRU/prendre_csru_medicament/{id}
+    defaults: { _controller: CSRUCSRUBundle:User:reserver }
+    
+resultatPatient:
+    path:     /CSRU/resultatPatient.html
+    defaults: { _controller: CSRUCSRUBundle:User:resultatPatient }
+    
+resultatMediFst:
+    path:     /CSRU/resultatMediFst.html
+    defaults: { _controller: CSRUCSRUBundle:User:resultatMediFst } 
+    
+resultatMediIpr:
+    path:     /CSRU/resultatMediIpr.html
+    defaults: { _controller: CSRUCSRUBundle:User:resultatMediIpr }
+    
+resultatMediSegou:
+    path:     /CSRU/resultatMediSegou.html
+    defaults: { _controller: CSRUCSRUBundle:User:resultatMediSegou }
+    
+forum:
+    path:     /CSRU/forum/liste/{page}
+    defaults: { _controller: CSRUCSRUBundle:User:forum,page:1 }
+    
+agenda:
+    path:     /CSRU/mon_agenda
+    defaults: { _controller: CSRUCSRUBundle:User:agenda}
+    
+
+
+
+# ici les differentes views côté admin
+
+page_accueilAdmin:
+    path:     /*acceuil_admin*
+    defaults: { _controller: CSRUCSRUBundle:Admin:accueilAdmin }
+    
+completerUtilisateur:
+    pattern:     /CSRU/inscription_csru/{id}
+    defaults: { _controller: CSRUCSRUBundle:Admin:completerUtilisateur }
+    
+inscription_valide:
+    pattern:     /CSRU/inscription_valide.html/{id}
+    defaults: { _controller: CSRUCSRUBundle:Admin:inscription_valide }
+    
+ajoutEtudiant:
+    path:     /CSRU/ajout_etudiant
+    defaults: { _controller: CSRUCSRUBundle:Admin:ajoutEtudiant }
+    
+ajoutEtudiant_succes:
+    path:     /CSRU/ajout_etudiant_valide
+    defaults: { _controller: CSRUCSRUBundle:Admin:ajoutEtudiant_succes }
+    
+ajoutMedicament:
+    path:     /CSRU/ajout_medicament
+    defaults: { _controller: CSRUCSRUBundle:Admin:ajoutMedicament }
+    
+listePharmacie:
+    path:     /CSRU/admin_liste_pharmacie.html
+    defaults: { _controller: CSRUCSRUBundle:Admin:listePharmacie }
+    
+medicamentFST:
+    path:     /CSRU/admin_pharmacie_fst.html
+    defaults: { _controller: CSRUCSRUBundle:Admin:medicamentFST }
+    
+medicamentIPR:
+    path:     /CSRU/admin_pharmacie_ipr.html
+    defaults: { _controller: CSRUCSRUBundle:Admin:medicamentIPR }
+    
+medicamentSEGOU:
+    path:     /CSRU/admin_pharmacie_segou.html
+    defaults: { _controller: CSRUCSRUBundle:Admin:medicamentSEGOU }
+    
+supprimerMedicamentSEGOU:
+    pattern:     /CSRU/supprimer_medicament_segou/{id}
+    defaults: { _controller: CSRUCSRUBundle:Admin:supprimerMedicamentSEGOU }
+    
+supprimerMedicamentFST:
+    pattern:     /CSRU/supprimer_medicament_fst/{id}
+    defaults: { _controller: CSRUCSRUBundle:Admin:supprimerMedicamentFST }
+    
+supprimerMedicamentIPR:
+    pattern:     /CSRU/supprimer_medicament_ipr/{id}
+    defaults: { _controller: CSRUCSRUBundle:Admin:supprimerMedicamentIPR }
+    
+modifierMedicamentIPR:
+    pattern:     /CSRU/modifier_medicament_ipr/{id}
+    defaults: { _controller: CSRUCSRUBundle:Admin:modifierMedicamentIPR }
+    
+modifierMedicamentSEGOU:
+    pattern:     /CSRU/modifier_medicament_segou/{id}
+    defaults: { _controller: CSRUCSRUBundle:Admin:modifierMedicamentSEGOU }
+    
+modifierMedicamentFST:
+    pattern:     /CSRU/modifier_medicament_fst/{id}
+    defaults: { _controller: CSRUCSRUBundle:Admin:modifierMedicamentFST }
+    
+listeUtilisateur:
+    path:     /CSRU/listeUtilisateur
+    defaults: { _controller: CSRUCSRUBundle:Admin:listeUtilisateur }
+    
+modifierUtilisateur:
+    pattern:     /CSRU/modifier_user/{id}
+    defaults: { _controller: CSRUCSRUBundle:Admin:modifierUtilisateur }
+    
+supprimerUtilisateur:
+    pattern:     /CSRU/supprimer_user/{id}
+    defaults: { _controller: CSRUCSRUBundle:Admin:supprimerUtilisateur }
+ 
+detailUtilisateur:
+    pattern:     /CSRU/detail_user/{id}
+    defaults: { _controller: CSRUCSRUBundle:Admin:detailUtilisateur }
+    
+ajoutCentre:
+    path:     /CSRU/ajout_centre_csru
+    defaults: { _controller: CSRUCSRUBundle:Admin:ajoutCentre }
+    
+listeCentre:
+    path:     /CSRU/liste_centre
+    defaults: { _controller: CSRUCSRUBundle:Admin:listeCentre}
+    
+supprimerCentre:
+    pattern:     /CSRU/supprimer_csru/{id}
+    defaults: { _controller: CSRUCSRUBundle:Admin:supprimerCentre }
+    
+modifierCentre:
+    pattern:     /CSRU/modifier_csru/{id}
+    defaults: { _controller: CSRUCSRUBundle:Admin:modifierCentre }
+    
+statistique:
+    pattern:     /CSRU/statistique_csru_globale.html
+    defaults: { _controller: CSRUCSRUBundle:Admin:statistique }
+    
+statistiquePersoCsru:
+    pattern:     /CSRU/statistique_csru_perso.html
+    defaults: { _controller: CSRUCSRUBundle:Admin:statistiquePersoCsru }
+    
+    
+# ici les differentes views côté patients
+
+listeEtudiantFST:
+    path:     /CSRU/liste_etudiant_fst
+    defaults: { _controller: CSRUCSRUBundle:Admin:listeEtudiantFST }
+
+listePatient:
+    path:     /CSRU/liste_patient
+    defaults: { _controller: CSRUCSRUBundle:Patient:listePatient }
+    
+ajoutDossierMedical:
+    path:     /CSRU/ajout_dossier_medical/{id}
+    defaults: { _controller: CSRUCSRUBundle:Patient:ajoutDossierMedical }
+    
+dossierMedical:
+    path:     /CSRU/dossier_medical_cree/{id}
+    defaults: { _controller: CSRUCSRUBundle:Patient:dossierMedical }
+  
+prescription:
+    path:     /CSRU/prescription/{id}
+    defaults: { _controller: CSRUCSRUBundle:Patient:prescription }
+    
+ajoutPrescription:
+    path:     /CSRU/ajoutPrescription/{id}
+    defaults: { _controller: CSRUCSRUBundle:Patient:ajoutPrescription }
+    
+detailPrescription:
+    path:     /CSRU/detailPrescription/{id}
+    defaults: { _controller: CSRUCSRUBundle:Patient:detailPrescription }
+    
+hospitalisation:
+    path:     /CSRU/hospitalisation/{id}
+    defaults: { _controller: CSRUCSRUBundle:Patient:hospitalisation }
+    
+ajoutHospitalisation:
+    path:     /CSRU/ajoutHospitalisation/{id}
+    defaults: { _controller: CSRUCSRUBundle:Patient:ajoutHospitalisation }
+    
+detailHospitalisation:
+    path:     /CSRU/detailHospitalisation/{id}
+    defaults: { _controller: CSRUCSRUBundle:Patient:detailHospitalisation }
+    
+consultation:
+    path:     /CSRU/consultation/{id}
+    defaults: { _controller: CSRUCSRUBundle:Patient:consultation }
+    
+ajoutConsultation:
+    path:     /CSRU/ajoutConsultation/{id}
+    defaults: { _controller: CSRUCSRUBundle:Patient:ajoutConsultation }
+    
+detailConsultation:
+    path:     /CSRU/detailConsultation/{id}
+    defaults: { _controller: CSRUCSRUBundle:Patient:detailConsultation }
+    
+antecedant:
+    path:     /CSRU/antecedant/{id}
+    defaults: { _controller: CSRUCSRUBundle:Patient:antecedant }
+    
+ajoutAntecedant:
+    path:     /CSRU/ajoutAntecedent/{id}
+    defaults: { _controller: CSRUCSRUBundle:Patient:ajoutAntecedant }
+    
+detailAntecedant:
+    path:     /CSRU/detailAntecedent/{id}
+    defaults: { _controller: CSRUCSRUBundle:Patient:detailAntecedant }
+    
+examen:
+    path:     /CSRU/examen_patient/{id}
+    defaults: { _controller: CSRUCSRUBundle:Patient:examen }
+    
+ajoutExamen:
+    path:     /CSRU/ajoutExamen_patient/{id}
+    defaults: { _controller: CSRUCSRUBundle:Patient:ajoutExamen}
+    
+detailExamen:
+    path:     /CSRU/detailExamen_patient/{id}
+    defaults: { _controller: CSRUCSRUBundle:Patient:detailExamen}
+    
+ficheSortie:
+    path:     /CSRU/ficheSortie/{id}
+    defaults: { _controller: CSRUCSRUBundle:Patient:ficheSortie}
+    
+ajoutFicheSortie:
+    path:     /CSRU/ajout_fiche_de_sortie/{id}
+    defaults: { _controller: CSRUCSRUBundle:Patient:ajoutFicheSortie}
+    
+ajoutRdv:
+    path:     /CSRU/ajout_rendez_vous/{id}
+    defaults: { _controller: CSRUCSRUBundle:Patient:ajoutRdv}
+    
+rdv:
+    path:     /CSRU/rendez_vous/{id}
+    defaults: { _controller: CSRUCSRUBundle:Patient:rdv}
+    
+    
+    
+    # Les Vues des pages en PDF
+    
+prescriptionPDF:
+    pattern:    /prescriptionPDF/{id}
+    defaults:   { _controller: CSRUCSRUBundle:PDF:prescriptionPDF}
+    
+ficheSortiePDF:
+    pattern:    /ficheSortiePDF/{id}
+    defaults:   { _controller: CSRUCSRUBundle:PDF:ficheSortiePDF}
+

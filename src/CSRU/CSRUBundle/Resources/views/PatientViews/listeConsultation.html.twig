@@ -1,0 +1,34 @@
+{% extends "::layout/layout.html.twig" %}
+{% block body %}
+
+    <!-- page d'affichage de la liste des consultation d'un patient donné  -->
+
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <a href="{{ path('dossierMedical',{'id':dossier.id}) }}"><button class="btn btn-round btn-success"> RETOUR </button> </a>
+            <a href="{{ path('ajoutConsultation',{'id':dossier.id}) }}"><button class="btn btn-round btn-info"> CONSULTER </button></a> 
+        </div>
+        <div class="col-lg-1"></div>
+    </div><br/>
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 white-panel">
+            <center><h3><font style="color: blue">Dossier Medical de {{ dossier.etudiant.nom }} {{ dossier.etudiant.prenom }}</font></h3></center><br/><br/>
+                    {% if consultations|length == null %}
+                <center> <h3>Aucune consultation n'est faite pour le moment  </h3></center>
+                {% else %}
+                {% endif %}
+            <table class="table table-bordered table-bordered table-striped table-condensed">
+                <tr>
+                    <td> 
+                        {% for consultation in consultations %}
+                    <center><a href="{{ path('detailConsultation',{'id':consultation.id}) }}" data-toggle="popover" title="détail" data-content="détail">Les consultations  à la date du {{ consultation.date|date('d-m-Y')}}</a></center>
+                    </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="col-lg-1"></div> 
+    </div>
+{% endblock %}

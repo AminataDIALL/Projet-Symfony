@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>src/CSRU/CSRUBundle/Resources/views/PatientViews/ajoutPrescription.html.twig</url>
+            <bookmark id="1">
+                <name/>
+                <line>42</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/wamp/www/CSRU1/src/CSRU/CSRUBundle/Resources/views/PDFViews/ficheSortiePDF.html.twig</file>
+            <file>file:/C:/wamp/www/CSRU1/src/CSRU/CSRUBundle/Resources/views/UserViews/agenda.html.twig</file>
+            <file>file:/C:/wamp/www/CSRU1/src/CSRU/CSRUBundle/Controller/UserController.php</file>
+            <file>file:/C:/wamp/www/CSRU1/src/CSRU/CSRUBundle/Controller/AdminController.php</file>
+            <file>file:/C:/wamp/www/CSRU1/src/CSRU/CSRUBundle/Resources/views/AdminViews/modifierMedicamentSEGOU.html.twig</file>
+            <file>file:/C:/wamp/www/CSRU1/src/CSRU/CSRUBundle/Resources/views/PatientViews/rdvPatient.html.twig</file>
+            <file>file:/C:/wamp/www/CSRU1/src/CSRU/CSRUBundle/Resources/config/routing.yml</file>
+            <file>file:/C:/wamp/www/CSRU1/src/CSRU/CSRUBundle/Resources/views/AdminViews/MedicamentFST.html.twig</file>
+            <file>file:/C:/wamp/www/CSRU1/src/CSRU/CSRUBundle/Form/RdvType.php</file>
+            <file>file:/C:/wamp/www/CSRU1/src/CSRU/CSRUBundle/Controller/PatientController.php</file>
+            <file>file:/C:/wamp/www/CSRU1/src/CSRU/CSRUBundle/Resources/views/AdminViews/MedicamentIPR.html.twig</file>
+            <file>file:/C:/wamp/www/CSRU1/src/CSRU/CSRUBundle/Resources/views/PatientViews/dossierMedical.html.twig</file>
+            <file>file:/C:/wamp/www/CSRU1/src/CSRU/CSRUBundle/Resources/views/AdminViews/MedicamentSEGOU.html.twig</file>
+            <file>file:/C:/wamp/www/CSRU1/src/CSRU/CSRUBundle/Resources/views/UserViews/listeEtudiant.html.twig</file>
+            <file>file:/C:/wamp/www/CSRU1/src/CSRU/CSRUBundle/Resources/views/PatientViews/ajoutRdv.html.twig</file>
+            <file>file:/C:/wamp/www/CSRU1/src/CSRU/CSRUBundle/Resources/views/AdminViews/ajoutMedicament.html.twig</file>
+        </group>
+    </open-files>
+</project-private>

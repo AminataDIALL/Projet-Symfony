@@ -1,0 +1,35 @@
+{% extends "::layout/layout.html.twig" %}
+{% block body %}
+
+    <!--  vue de la page affichant la liste des prescriptions d'un dossier Medical -->
+
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <a href="{{ path('dossierMedical',{'id':dossier.id}) }}"><button class="btn btn-round btn-success"> RETOUR </button></a>
+            <a href="{{ path('ajoutPrescription',{'id':dossier.id}) }}"><button class="btn btn-round btn-primary"> PRESCRIRE </button></a>
+        </div>
+        <div class="col-lg-1"></div>
+    </div><br/>
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10 white-panel">
+            <center><h3><font style="color: blue">Dossier Medical de {{ dossier.etudiant.nom }} {{ dossier.etudiant.prenom }}</font></h3></center><br/><br/>
+                    {% if prescriptions|length == null %}
+                <center> <h3>Aucune prescription n'est faite pour le moment  </h3></center>
+                {% else %}
+                {% endif %}
+            <table class="table table-bordered table-bordered table-striped table-condensed">
+                {% for prescription in prescriptions %}
+                    <tr>
+                        <td>
+                    <center><a href="{{ path('detailPrescription',{'id':prescription.id}) }}" data-toggle="popover" title="détail" data-content="détail">Les prescriptions à la date du {{ prescription.date|date('d-m-Y')}}</a></center>
+                    </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="col-lg-1"></div> 
+    </div> 
+
+{% endblock %}

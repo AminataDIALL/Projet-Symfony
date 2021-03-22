@@ -1,0 +1,33 @@
+{% extends "::layout/layout.html.twig" %}
+{% block body %}
+
+    <!--  vue de la page d'ajout d'un dossier Medical -->
+
+    {% for m in app.session.Flashbag.get('info') %}
+        <div class="row alert alert-danger" style="text-align: center">
+            <h4>
+                {{ m }}
+            </h4>
+        </div>
+    {% endfor %}
+
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <h4>Veuillez remplir le formulaire ci-dessous</h4>
+        <div class="form-group city3">
+            {{ form_start(form) }}
+            <div class="form-group">
+                {{ form_label(form.centre) }}
+                {{ form_widget(form.centre ,{'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.centre) }}
+
+                {{form_label(form.image.file) }}
+                {{ form_widget(form.image.file ,{'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.image.file) }}
+            </div>
+            <button class="btn btn-primary" type="submit">Valider</button>
+            {{ form_end(form) }}
+        </div><br/>
+    </div>
+    <div class="col-lg-3"></div>
+{% endblock %}

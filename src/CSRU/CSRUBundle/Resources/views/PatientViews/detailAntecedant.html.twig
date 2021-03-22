@@ -1,0 +1,30 @@
+{% extends "::layout/layout.html.twig" %}
+{% block body %}
+
+    <!--  vue de la page de détail d'un antécedent d'un dossier Medical -->
+
+    <div class="col-lg-12 white-panel">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-9">
+            <h3> Fiche d'antécédent du {{ antecedant.date|date('d-m-Y') }}</h3><br/>
+            <div class="col-lg-6">
+                <p>NOM PATIENT:</p>
+                <p>PRENOM PATIENT:</p>
+                <p>TYPE:</p>
+                <p>DESCRIPTION:</p>
+            </div>
+            <div class="col-lg-6">
+                <p><strong style="color: blue">{{ antecedant.dossierMedical.etudiant.nom }}</strong></p>
+                <p><strong style="color: blue">{{ antecedant.dossierMedical.etudiant.prenom }}</strong></p>
+                <p><strong style="color: blue">{{ antecedant.type}}</strong></p>
+                <p><strong style="color: blue">{{ antecedant.description}}</strong></p><br/><br/><br/><br/>
+                <p style="float: right">SIGNATURE:  <strong style="color: blue">{{ antecedant.utilisateur.profil.profession}} {{ antecedant.utilisateur.username}}</strong></p>
+            </div>
+        </div><br/>
+        <div class="col-lg-2">
+            <a href="{{ path('antecedant',{'id':antecedant.dossierMedical.id}) }}"><button class="btn btn-round btn-success" style="width: 100px"> RETOUR </button></a><br/><br/>
+            <a href="#"><button class="btn btn-round btn-info" style="width: 100px"> IMPRIMER </button></a>  
+        </div> 
+    </div>
+
+{% endblock %}

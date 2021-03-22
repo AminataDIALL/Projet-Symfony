@@ -1,0 +1,48 @@
+{% extends "::layout/layout.html_1.twig" %}
+{% block body %}
+       <head>
+        <title> Modifier </title>
+              
+    </head>
+
+  <div class="col-lg-6">
+        {{ form_start(form) }}
+            {{ form_label(form.username) }}
+            {{ form_widget(form.username ,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.username) }}
+
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email ,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.email) }}
+
+            {{ form_label(form.profil.age) }}
+            {{ form_widget(form.profil.age ,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.profil.age) }}
+            
+            {{ form_label(form.profil.centre) }}
+            {{ form_widget(form.profil.centre ,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.profil.centre) }}
+
+        </div>
+        <div class="col-lg-6">
+            {{ form_label(form.profil.profession) }}
+            {{ form_widget(form.profil.profession ,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.profil.profession) }}
+            
+            {{ form_label(form.profil.adresse) }}
+            {{ form_widget(form.profil.adresse ,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.profil.adresse) }}
+
+            {{form_label(form.profil.telephone) }}
+            {{ form_widget(form.profil.telephone ,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.profil.telephone) }}
+                     
+            {{form_label(form.profil.image.file) }}
+            {{ form_widget(form.profil.image.file ,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.profil.image.file) }}
+<br/><br/>
+        </div>
+            <button class="btn btn-primary" type="submit">Modifier</button>
+            {{ form_end(form) }}
+ <br/>
+    {% endblock %}

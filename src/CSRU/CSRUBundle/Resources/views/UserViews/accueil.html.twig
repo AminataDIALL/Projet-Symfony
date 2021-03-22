@@ -1,0 +1,50 @@
+{% extends "::layout/layout.html.twig" %}
+{% block body %}
+    
+    <!--  vue de la page d'accueil côté utilisateurs -->
+    
+    <div class="row">
+    <div class="col-md-4 mb">
+        <!-- WHITE PANEL - TOP USER -->
+        <div class="white-panel pn">
+            <div class="white-header">
+                <h5><strong style="color: black">SANTE</strong></h5>
+            </div>
+            <p><img src="{{asset('http://localhost/CSRU/web/images/campus-kabala.jpg')}}" class="img-circle" width="80"></p>
+            <p><b><strong style="color: blue">Santé universitaire</strong></b></p>
+            <div class="row">
+                    <p><strong style="color: black">Chaque étudiant a droit à la santé</strong></p>
+                    <p></p>
+                    <p></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb">
+        <!-- WHITE PANEL - TOP USER -->
+        <div class="white-panel pn">
+            <div class="white-header">
+                <h5><strong style="color: black">HYGIENE</strong></h5>
+            </div>
+            <p><img src="{{asset('http://localhost/CSRU/web/images/fseg.jpg')}}" class="img-circle" width="80"></p>
+            <p><b><strong style="color: blue">Hygiène Universitaire</strong></b></p>
+            <div class="row">
+                   <p><strong style="color: black">Chaque résidence universitaire a droit à la proprété</strong></p>
+            </div>
+        </div>
+    </div>
+        
+        <div class="col-md-4 mb">
+        <!-- WHITE PANEL - TOP USER -->
+        <div class="white-panel pn">
+            <div class="white-header">
+                <h5><strong style="color: black">ASSURANCE</strong></h5>
+            </div>
+            <p><img src="{{asset('http://localhost/CSRU/web/images/Fmpos.jpg')}}" class="img-circle" width="90"></p>
+            <p><b><strong style="color: blue">Assurance Universitaire</strong></b></p>
+            <div class="row">
+                    <p><strong style="color: black">Assurer la prise en charge des cas de maladies dans les milieux universitaires</strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

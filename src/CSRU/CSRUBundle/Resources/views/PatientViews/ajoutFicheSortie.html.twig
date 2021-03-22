@@ -1,0 +1,42 @@
+{% extends "::layout/layout.html.twig" %}
+{% block body %}
+
+    <!--  vue de la page d'ajout d'une fiche de sortie d'une hospitalisation -->
+
+    <center> <h2> Fiche de sortie</h2></center><br/>
+        {% for m in app.session.Flashbag.get('info') %}
+        <div class="row alert alert-danger" style="text-align: center">
+            <h4>
+                {{ m }}
+            </h4>
+        </div>
+    {% endfor %}
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+        <div class="form-group city3">
+            {{ form_start(form) }}
+            {{ form_label(form.bilan) }}
+            {{ form_widget(form.bilan ,{'attr':{'class':'form-control','heigth':'200px'}}) }}
+            {{ form_errors(form.bilan) }}
+
+            {{ form_label(form.regimeSuivi) }}
+            {{ form_widget(form.regimeSuivi ,{'attr':{'class':'form-control','heigth':'200px'}}) }}
+            {{ form_errors(form.regimeSuivi) }}
+
+            {{ form_label(form.dateSortie) }}
+            {{ form_widget(form.dateSortie ,{'attr':{'class':'form-control','heigth':'200px'}}) }}
+            {{ form_errors(form.dateSortie) }}
+
+        </div><br/>
+        <div class="row">
+            <div class="col-lg-6">
+                <button class="btn btn-round btn-info" type="submit" style="float: right">Valider</button>
+                {{ form_end(form) }}
+            </div>
+            <div class="col-lg-6">
+                <a href="#"><button class="btn btn-round btn-warning"> Annuler </button> </a>
+            </div>
+        </div>
+    </div><br/>
+    <div class="col-lg-2"></div>
+{% endblock %}

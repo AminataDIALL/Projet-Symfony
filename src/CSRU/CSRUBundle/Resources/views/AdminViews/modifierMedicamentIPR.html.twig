@@ -1,0 +1,45 @@
+{% extends "::layout/layout.html_1.twig" %}
+{% block body %}
+    <head>
+        <title> Modifier </title>
+
+    </head>
+    <center> <h2>Modification du Médicament</h2></center>
+    <div class="col-lg-6">
+        {{ form_start(form) }}
+        {{ form_label(form.nom) }}
+        {{ form_widget(form.nom ,{'attr':{'class':'form-control'}}) }}
+        {{ form_errors(form.nom) }}
+
+        {{ form_label(form.description) }}
+        {{ form_widget(form.description ,{'attr':{'class':'form-control'}}) }}
+        {{ form_errors(form.description) }}
+
+        {{ form_label(form.quantite) }}
+        {{ form_widget(form.quantite ,{'attr':{'class':'form-control'}}) }}
+        {{ form_errors(form.quantite) }}
+
+    </div>
+    <div class="col-lg-6">
+        {{ form_label(form.prix) }}
+        {{ form_widget(form.prix ,{'attr':{'class':'form-control'}}) }}
+        {{ form_errors(form.prix) }}
+
+        {{ form_label(form.date) }}
+        {{ form_widget(form.date ,{'attr':{'class':'form-control'}}) }}
+        {{ form_errors(form.date) }}
+
+        {{ form_label(form.datePerime) }}
+        {{ form_widget(form.datePerime ,{'attr':{'class':'form-control'}}) }}
+        {{ form_errors(form.datePerime) }}
+        <br/><br/>
+    </div>
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <button class="btn btn-round btn-info" type="submit">Modifier</button>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

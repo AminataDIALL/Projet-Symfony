@@ -1,0 +1,104 @@
+{% extends "::layout/layout.html_1.twig" %}
+
+{% block body %}
+     <h3 style="text-align: center">Statistiques des personnels du  CSRU </h3>
+     <div class="col-sm-12">
+        <ul class="breadcrumb">
+            <li> Voir aussi&nbsp; <span class="glyphicon glyphicon-hand-right">&nbsp;&nbsp;</span></li>
+            <li><a href="#">Statistiques par Centre</a></li>
+            <li><a href="{{ path('statistiquePersoCsru') }}">Statistiques des personnels de CSRU</a></li>
+        </ul>
+    </div>
+    <ul class="nav nav-list">
+        <li class="dropdown"><a class="navbar-brand" data-toggle="dropdown" href="" title="Imprimer">
+                <span class="glyphicon glyphicon-print"></span><b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li><a href="#" target="_blank">Statistiques globales</a></li>
+                <li><a href="#"  target="_blank">Statistiques par corps</a></li>
+                <li><a href="#" target="_blank">Statistiques par grade</a></li>
+                <li><a href="#" target="_blank">Statistiques par genre</a></li>
+                <li><a href="#" target="_blank">Statistiques par tranche d'âge</a></li>
+                <li><a href="#" target="_blank">Statistiques par niveau d'étude</a></li>
+                <li><a href="#" target="_blank">Statistiques des départs à la rétraite</a></li>
+            </ul>
+        </li>
+    </ul>
+     <div class="row">
+        <div class="col-sm-6">
+            <div id="all"></div>
+        </div>
+        <div class="col-sm-6">
+            <div id="prof"></div>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <div class="row">
+        <div class="col-sm-5">
+            <div id="genre"></div>
+        </div>
+        <div class="col-sm-offset-1 col-sm-6">
+            <div id="fst"></div>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="etude"></div>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="retraite"></div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('css/jquery-3.1.0.min.js') }}"></script>
+    <script src="{{ asset('css/morris.min.js') }}"></script>
+    <script src="{{ asset('css/raphael.min.js') }}"></script>
+    <script>
+       
+        
+        Morris.Bar({
+            element: 'all',
+            data: [
+                {
+                    y: 'Personnels des centres',
+                    a: {{ all|length }},
+                    b: {{ fst|length }},
+                    c: {{ ipr|length }},
+                    d: {{ segou|length }},
+                    e: {{ cenou|length }}
+               }
+            ],
+            xkey: 'y',
+            ykeys: ['a', 'b','c','d','e'],
+            labels: ['Tous les personnels', 'Personnels FST','Personnels IPR','Personnels SEGOU','Personnels CENOU']
+        });
+        
+         Morris.Bar({
+            element: 'prof',
+            data: [
+                {
+                    y: 'Professions',
+                    a: {{ prof|length }},
+                    b: {{ admin|length }},
+                    c: {{ presta|length }},
+                    d: {{ infir|length }}
+               }
+            ],
+            xkey: 'y',
+            ykeys: ['a', 'b','c','d'],
+            labels: ['Tous les personnels', 'Administrateur','Prestataires','Infirmiers']
+        });
+        
+        
+    </script>
+{% endblock %}

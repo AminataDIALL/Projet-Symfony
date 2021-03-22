@@ -1,0 +1,21 @@
+{% extends "::layout/layout.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{% block body %}
+    <center>
+        <h2>Mettre à jour mon compte</h2>               
+        <div class="span4">                        
+        </div>
+    </center>
+    <center>  
+        <div class="col-sm-4 col-sm-offset-4" style="border: 1px outset #aaa">
+
+            <form  action="{{ path('fos_user_profile_edit')}}" {{ form_enctype(form) }} method="POST">
+                {{ form_widget(form)}}
+                <br />
+                <div>
+                    <input class="btn btn-warning" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+                </div>
+            </form>
+    </center>
+{% endblock body %}

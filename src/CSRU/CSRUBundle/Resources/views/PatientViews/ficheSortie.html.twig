@@ -1,0 +1,64 @@
+{% extends "::layout/layout.html.twig" %}
+{% block body %}
+
+    <!--  vue de la page de détail d'une fiche de sortie d'une hospitalisation -->
+
+    <div class="col-lg-12 white-panel">
+        {% if fiche|length == null %}
+            <center> 
+                <h3>Aucune fiche de sortie associée</h3>
+                <a href="{{ path('ajoutFicheSortie',{'id':hospitalisation.id}) }}"><button class="btn btn-round btn-info" style="width: 250px"> CREER UNE FICHE DE SORTIE </button></a><br/><br/>
+            </center>
+        {% endif %}
+    </div>
+
+    {% for fiche in fiche %}
+        <div class="col-lg-12 white-panel">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-9">
+                <h3><strong style="color: black"> Fiche de Sortie de </strong><strong style="color: blue">{{ hospitalisation.dossierMedical.etudiant.nom }} {{ hospitalisation.dossierMedical.etudiant.prenom }} </strong></h3><br/>
+                <div class="col-lg-6">
+                    <p><strong style="color: black">NOM PATIENT: </strong></p>
+                    <p><strong style="color: black">PRENOM PATIENT: </strong></p>
+                    <p><strong style="color: black">NOM HOPITAL: </strong></p>
+                    <p><strong style="color: black">PAVILLON: </strong></p>
+                    <p><strong style="color: black">SALLE: </strong></p>
+                    <p><strong style="color: black">LIT: </strong></p>
+                    <p><strong style="color: black">MOTIF HOSPITALISATION: </strong></p>
+                    <p><strong style="color: black">BILAN: </strong></p>
+                        <p><strong style="color: black">CONSIGNES: </strong></p>
+                    <p><strong style="color: black">DATE DEBUT SEJOUR: </strong></p>
+                    <p><strong style="color: black">DATE FIN SEJOUR: </strong></p>
+                    <p><strong style="color: black">DUREE: </strong></p>
+
+                </div>
+                <div class="col-lg-6">
+                    <p><strong style="color: blue">{{ hospitalisation.dossierMedical.etudiant.nom }}</strong></p>
+                    <p><strong style="color: blue">{{ hospitalisation.dossierMedical.etudiant.prenom }}</strong></p>
+                    <p><strong style="color: blue">  {{ hospitalisation.hopital }}</strong></p>
+                    <p><strong style="color: blue">  {{ hospitalisation.pavillon }}</strong></p>
+                    <p><strong style="color: blue">  {{ hospitalisation.salle }}</strong></p>
+                    <p><strong style="color: blue">  {{ hospitalisation.lit }}</strong></p>
+                    <p><strong style="color: blue">  {{ hospitalisation.motif }}</strong></p>
+                    <p><strong style="color: blue">  {{ fiche.bilan }}</strong></p>
+                    <p><strong style="color: blue">  {{ fiche.regimeSuivi }}</strong></p>
+                    <p><strong style="color: blue">  {{ fiche.hospitalisation.date|date('d-m-Y') }}</strong></p>
+                    <p><strong style="color: blue">  {{ fiche.dateSortie|date('d-m-Y') }}</strong></p>
+                    <p><strong style="color: blue">  {% if hospitalisation.date|date('Y') -  fiche.dateSortie|date('Y') == 0 %}
+                                                     {{ hospitalisation.date|date('m') -  fiche.dateSortie|date('m') }} mois  {{ hospitalisation.date|date('d') -  fiche.dateSortie|date('d') }} jours
+                                                     {% elseif  hospitalisation.date|date('m') -  fiche.dateSortie|date('m') == 0 %}
+                                                          {{ hospitalisation.date|date('d') -  fiche.dateSortie|date('d') }} jours
+                                                        {% else%} 
+                                                        {{  fiche.dateSortie|date('Y') - hospitalisation.date|date('Y')  }} ans    {{fiche.dateSortie|date('m') - hospitalisation.date|date('m')}} mois {{fiche.dateSortie|date('d') - hospitalisation.date|date('d') }} jours
+                                                      {% endif%}
+                        </strong></p><br/><br/><br/><br/>
+                    <p style="float: right">SIGNATURE:  <strong style="color: blue">{{ hospitalisation.utilisateur.profil.profession}} {{ hospitalisation.utilisateur.username}}</strong></p>
+                </div>
+            </div><br/>
+            <div class="col-lg-2">
+                <a href="{{ path('detailHospitalisation',{'id':fiche.hospitalisation.id}) }}"><button class="btn btn-round btn-success" style="width: 100px"> RETOUR </button></a><br/><br/>
+                <a href="{{ path('ficheSortiePDF',{'id':fiche.id})}}"><button class="btn btn-round btn-info" style="width: 100px"> IMPRIMER </button></a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

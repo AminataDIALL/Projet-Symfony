@@ -1,0 +1,209 @@
+<?php
+
+namespace CSRU\CSRUBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Consultation
+ *
+ * @ORM\Table(name="ficheDeSortie")
+ * @ORM\Entity
+  * @ORM\Entity(repositoryClass="CSRU\CSRUBundle\Repository\FicheDeSortietRepository")
+ */
+class FichedeSortie
+{
+    /**
+     * @var integer
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="CSRU\CSRUBundle\Entity\Patient",mappedBy="consultation",
+     * cascade={ "remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $patient;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="CSRU\CSRUBundle\Entity\DossierMedical",inversedBy="fichedeSortie")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $dossierMedical;
+    
+     /**
+     * @ORM\ManyToOne(targetEntity="CSRU\CSRUBundle\Entity\Utilisateur",inversedBy="fichedeSortie")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $utilisateur;
+    
+     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", length=20, nullable=false)
+     */
+    private $date;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="regime", type="string", length=100, nullable=false)
+     */
+    private $regime;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=100, nullable=false)
+     */
+    private $description;
+    
+    
+
+  
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->patient = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return FichedeSortie
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set regime
+     *
+     * @param string $regime
+     * @return FichedeSortie
+     */
+    public function setRegime($regime)
+    {
+        $this->regime = $regime;
+
+        return $this;
+    }
+
+    /**
+     * Get regime
+     *
+     * @return string 
+     */
+    public function getRegime()
+    {
+        return $this->regime;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return FichedeSortie
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Add patient
+     *
+     * @param \CSRU\CSRUBundle\Entity\Patient $patient
+     * @return FichedeSortie
+     */
+    public function addPatient(\CSRU\CSRUBundle\Entity\Patient $patient)
+    {
+        $this->patient[] = $patient;
+
+        return $this;
+    }
+
+    /**
+     * Remove patient
+     *
+     * @param \CSRU\CSRUBundle\Entity\Patient $patient
+     */
+    public function removePatient(\CSRU\CSRUBundle\Entity\Patient $patient)
+    {
+        $this->patient->removeElement($patient);
+    }
+
+    /**
+     * Get patient
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPatient()
+    {
+        return $this->patient;
+    }
+
+    /**
+     * Set dossierMedical
+     *
+     * @param \CSRU\CSRUBundle\Entity\DossierMedical $dossierMedical
+     * @return FichedeSortie
+     */
+    public function setDossierMedical(\CSRU\CSRUBundle\Entity\DossierMedical $dossierMedical = null)
+    {
+        $this->dossierMedical = $dossierMedical;
+
+        return $this;
+    }
+
+    /**
+     * Get dossierMedical
+     *
+     * @return \CSRU\CSRUBundle\Entity\DossierMedical 
+     */
+    public function getDossierMedical()
+    {
+        return $this->dossierMedical;
+    }
+}

@@ -1,0 +1,73 @@
+{% extends "::layout/layout.html.twig" %}
+{% block body %}
+
+    <!--  vue de la page de détail d'une prescription d'un dossier Medical -->
+
+    <div class="col-lg-12 white-panel">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-9">
+            <h3> Prescription du {{ prescription.date|date('d-m-Y') }}</h3><br/>
+            <div class="col-lg-6">
+                <p>NOM PATIENT:</p>
+                <p>PRENOM PATIENT:</p>
+                <p>TYPE DE PRESCRIPTION:</p>
+            </div>
+            <div class="col-lg-6">
+                <p><strong style="color: blue">{{ prescription.dossierMedical.etudiant.nom }}</strong></p>
+                <p><strong style="color: blue">{{ prescription.dossierMedical.etudiant.prenom }}</strong></p>
+                <p><strong style="color: blue">  {{ prescription.type}}</strong></p><br/><br/><br/><br/>
+            </div>
+            {% if prescription.type == 'Ordonance' %}
+                <table width="100%" class="table table-striped  table-bordered bootstrap-datatable datatable">
+                    <thead>
+                    <th style="line-height: 210%">
+                    <center>Medicament</center>
+                    </th>
+                    <th>
+                    <center>  Quantité </center>
+                    </th>
+                    <th>
+                    <center> Posologie</center>
+                    </th>
+                    </thead>
+                        <tr>
+                        <td>
+                        <center>  {{ prescription.MediPrescription.nomMedicament }} </center>
+                        </td>
+                        <td>
+                        <center> {{ prescription.MediPrescription.quantiteMedicament }}</center>
+                        </td>
+                        <td>
+                        <center> {{ prescription.MediPrescription.nbreMedicament }}</center>
+                        </td>
+                        </tr>
+                </table>
+               {% else %}
+                    <table width="100%" class="table table-striped  table-bordered bootstrap-datatable datatable">
+                    <thead>
+                    <th>
+                    <center>TYPE EXAMEN</center>
+                    </th>
+                    <th>
+                    <center>  DESCRIPTION </center>
+                    </th>
+                    </thead>
+                        <tr>
+                        <td>
+                        <center>  {{ prescription.typeExamen }} </center>
+                        </td>
+                        <td>
+                        <center> {{ prescription.contenu }}</center>
+                        </td>
+                        </tr>
+                </table>
+            {% endif %}
+            <p style="float: right">SIGNATURE:  <strong style="color: blue">{{ prescription.utilisateur.profil.profession}} {{ prescription.utilisateur.username}}</strong></p>
+        </div><br/>
+        <div class="col-lg-2">
+            <a href="{{ path('prescription',{'id':prescription.dossierMedical.id}) }}"><button class="btn btn-round btn-success" style="width: 100px"> RETOUR </button></a><br/><br/>
+            <a href="{{ path('prescriptionPDF',{'id':prescription.id}) }}"><button class="btn btn-round btn-info" style="width: 100px"> IMPRIMER </button></a>
+        </div>
+    </div>
+
+{% endblock %}

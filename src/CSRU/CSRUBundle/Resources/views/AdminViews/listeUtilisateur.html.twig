@@ -1,0 +1,83 @@
+{% extends "::layout/layout.html_1.twig" %}
+{% block body %}
+    <a href="{{ path('fos_user_registration_register') }}" style="float: right"><button class="btn btn-primary">Ajouter un utilisateur</button></a>
+    <h2><center>Liste des Utilisateurs</center></h2>
+    <section class="table-responsive">
+        <table class="table table-bordered table-bordered table-striped table-condensed">
+            <thead style="background-color: #e4b9b9">
+            <th style="line-height: 210%">
+            <center>Photo</center>
+            </th>
+            <th>
+            <center>Titre</center>
+            </th>
+            <th>
+            <center>Lieu de travail</center>
+            </th>
+            <th>
+            <center>Nom</center>
+            </th>
+            <th>
+            <center>Email</center>
+            </th>
+            <th>
+            <center> Action</center>
+            </th>
+            </thead>
+            {% for user in user %}
+                {% if user.profil|length != null %}   
+                    <tr>
+                        <td>
+                    <center> <center><img src="{{asset(user.profil.image.AssetPath) }}" alt="photo User" width="100" height="50"></center></center>
+                    </td>
+                    <td>
+                    <center> {{ user.profil.profession }}</center>
+                    </td>
+                    <td>
+                    <center> {{ user.profil.centre }}</center>
+                    </td>
+                    <td>
+                    <center> {{ user.username }}</center>
+                    </td>
+                    <td>
+                    <center> {{ user.email }}</center>
+                    </td>
+                    <td>
+                    <center>
+                        <a href="{{ path('modifierUtilisateur',{'id':user.id})}}" data-toggle="popover" title="Modifier" data-content="Modifier"><button class="btn btn-success"><span class="glyphicon glyphicon-edit"></span></button></a>
+                        <a href="{{ path('supprimerUtilisateur',{'id':user.id})}}" onclick ="return(confirm('Etes-vous certain de vouloir supprimer cet utilisateur?'));"data-toggle="popover" title="Supprimer" data-content="Supprimer"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button></a>
+                        <a href="{{ path('detailUtilisateur',{'id':user.id})}}" data-toggle="popover" title="détail" data-content="détail"><button class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></button></a>
+                    </center>
+                    </td>
+                    </tr>
+                {% else %}
+
+                    <tr>
+                        <td>
+                    <center> </center>
+                    </td>
+                    <td>
+                    <center> </center>
+                    </td>
+                    <td>
+                    <center>  </center>
+                    </td>
+                    <td>
+                    <center> {{ user.username }}</center>
+                    </td>
+                    <td>
+                    <center> {{ user.email }}</center>
+                    </td>
+                    <td>
+                    <center>
+                        <a href="{{ path('modifierUtilisateur',{'id':user.id})}}" data-toggle="popover" title="Modifier" data-content="Modifier"><button class="btn btn-success"><span class="glyphicon glyphicon-edit" ></span></button></a>
+                        <a href="{{ path('supprimerUtilisateur',{'id':user.id})}}"onclick ="return(confirm('Etes-vous certain de vouloir supprimer cet utilisateur?'));" data-toggle="popover" title="Supprimer" data-content="Supprimer"><button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button></a>
+                    </center>
+                    </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+    </section>  
+    
+{% endblock %}
